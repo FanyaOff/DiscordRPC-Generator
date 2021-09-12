@@ -390,5 +390,12 @@ namespace Login_Page_Design_UI
             // переход на сайт с тутором
             Process.Start("http://discordrpctutorial.getenjoyment.net/");
         }
+
+        private void guna2Button7_Click(object sender, EventArgs e)
+        {
+            // открыть форму с кредитами
+            credits cd = new credits();
+            cd.Show();
+        }
     }
 }

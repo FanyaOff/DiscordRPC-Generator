@@ -81,6 +81,7 @@ namespace Login_Page_Design_UI
             this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.guna2Button7 = new Guna.UI2.WinForms.Guna2Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.guna2Panel2.SuspendLayout();
@@ -102,6 +103,7 @@ namespace Login_Page_Design_UI
             // guna2Panel2
             // 
             this.guna2Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.guna2Panel2.Controls.Add(this.guna2Button7);
             this.guna2Panel2.Controls.Add(this.pictureBox2);
             this.guna2Panel2.Controls.Add(this.guna2HtmlLabel25);
             this.guna2Panel2.Controls.Add(this.guna2HtmlLabel24);
@@ -739,6 +741,24 @@ namespace Login_Page_Design_UI
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // guna2Button7
+            // 
+            this.guna2Button7.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button7.BorderRadius = 2;
+            this.guna2Button7.CheckedState.Parent = this.guna2Button7;
+            this.guna2Button7.CustomImages.Parent = this.guna2Button7;
+            this.guna2Button7.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
+            this.guna2Button7.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2Button7.ForeColor = System.Drawing.Color.White;
+            this.guna2Button7.HoverState.Parent = this.guna2Button7;
+            this.guna2Button7.Location = new System.Drawing.Point(366, 459);
+            this.guna2Button7.Name = "guna2Button7";
+            this.guna2Button7.ShadowDecoration.Parent = this.guna2Button7;
+            this.guna2Button7.Size = new System.Drawing.Size(180, 45);
+            this.guna2Button7.TabIndex = 39;
+            this.guna2Button7.Text = "Credits";
+            this.guna2Button7.Click += new System.EventHandler(this.guna2Button7_Click);
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -834,5 +854,6 @@ namespace Login_Page_Design_UI
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel25;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private Guna.UI2.WinForms.Guna2Button guna2Button7;
     }
 }
