@@ -10,6 +10,7 @@ namespace Login_Page_Design_UI
 {
     static class Program
     {
+        public static DiscordRPC f1;
         public static Config Config { get; private set; }
         /// <summary>
         /// The main entry point for the application.
@@ -21,7 +22,7 @@ namespace Login_Page_Design_UI
             Config.Load(Path.GetTempPath() + "config.xml");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DiscordRPC());
+            Application.Run(f1 = new DiscordRPC());
             Config.Save();
         }
 

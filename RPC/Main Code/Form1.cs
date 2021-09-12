@@ -305,29 +305,8 @@ namespace Login_Page_Design_UI
 
         private void guna2Button5_Click(object sender, EventArgs e)
         {
-            // экспорт файла
-            SoundPlayer sp = new SoundPlayer();
-            sp.Stream = Properties.Resources.blya;
-            MessageBox.Show("Создайте TXT файл в любой папке\nи нажмите OK для записи текста туда");
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "TXT File|*.txt";
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                // читка файла
-                using (StreamWriter incdate = File.AppendText(openFileDialog1.FileName))
-                {
-                    // запись в файл
-                    incdate.WriteLine(guna2TextBox1.Text, '\n');
-                    incdate.WriteLine(guna2TextBox2.Text, '\n');
-                    incdate.WriteLine(guna2TextBox3.Text, '\n');
-                    incdate.WriteLine(guna2TextBox4.Text, '\n');
-                    incdate.WriteLine(guna2TextBox5.Text, '\n');
-                    incdate.WriteLine(guna2TextBox6.Text, '\n');
-                }
-                // проигрывание звука
-                sp.Play();
-                MessageBox.Show("Done");
-            }
+            filename go = new filename();
+            go.Show();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
