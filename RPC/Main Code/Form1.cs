@@ -31,16 +31,27 @@ namespace Login_Page_Design_UI
         private ContextMenu m_menu;
         public DiscordRPC()
         {
+            // инициализация таймера (не работает)
             timer.Tick += new EventHandler(timer1_Tick);
-            SoundPlayer sp = new SoundPlayer();
+
+            // локальная переменная для проигрывания звуков
+            SoundPlayer sp = new SoundPlayer(); 
+
+            // вытаскиваем файл с звуком для проигрывания из ресурсов проекта
             sp.Stream = Properties.Resources.blya;
+
+            // загрузка формы
             InitializeComponent();
-            if (!File.Exists(filePath))
+
+            // создание файла с настройками
+            if (!File.Exists(filePath)) 
             {
                 var myFile = File.CreateText(filePath);
                 myFile.Close();
             }
-            m_menu = new ContextMenu();
+
+            // трей меню
+            m_menu = new ContextMenu(); 
             m_menu.MenuItems.Add(0,
                 new MenuItem("Show", new System.EventHandler(Show)));
             m_menu.MenuItems.Add(1,
@@ -50,9 +61,10 @@ namespace Login_Page_Design_UI
         }
 
 
-
-        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        // дабл клик по трею
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e) 
         {
+            // разворачивание приложения
             notifyIcon1.Visible = false;
             this.ShowInTaskbar = true;
             WindowState = FormWindowState.Normal;
@@ -97,21 +109,21 @@ namespace Login_Page_Design_UI
             
         }
 
-        protected override void OnLoad(EventArgs e)
+        protected override void OnLoad(EventArgs e) // при загрузке формы
         {
+            // загрузка настроек
             base.OnLoad(e);
-
             LoadSettings();
         }
 
-        protected override void OnClosed(EventArgs e)
+        protected override void OnClosed(EventArgs e) // при закрытии формы
         {
+            // сохранение настроек
             base.OnClosed(e);
-
             SaveSettings();
         }
 
-        private void DiscordRPC_Resize(object sender, EventArgs e)
+        private void DiscordRPC_Resize(object sender, EventArgs e) // разворачивание приложения
         {
             if (WindowState == FormWindowState.Minimized)
             {
@@ -120,12 +132,14 @@ namespace Login_Page_Design_UI
             }
         }
 
+        // кнопка Show в трее
         protected void Show(Object sender, System.EventArgs e)
         {
             this.Visible = true;
             notifyIcon1.Visible = false;
         }
 
+        // кнопка Off в трее
         protected void Off(Object sender, System.EventArgs e)
         {
             base.OnClosed(e);
@@ -134,6 +148,7 @@ namespace Login_Page_Design_UI
             MessageBox.Show("RPC Успешно отключён!\nДля повторного включение запустите его заного");
         }
 
+        // кнопка Close в трее
         protected void Close(Object sender, System.EventArgs e)
         {
             Application.Exit();
@@ -141,38 +156,47 @@ namespace Login_Page_Design_UI
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            // открытие диалогового окна
+            OpenFileDialog openFileDialog1 = new OpenFileDialog(); 
+
+            // фильтр файлов
             openFileDialog1.Filter = "PNG Image|*.png";
 
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            // если мы нажали на кнопку ОК
+            if (openFileDialog1.ShowDialog() == DialogResult.OK) 
             {
-                pictureBox1.Image = Image.FromFile(openFileDialog1.FileName);
+                // заменяем картинку
+                pictureBox1.Image = Image.FromFile(openFileDialog1.FileName); 
             }
         }
 
-        private void notifyIcon1_MouseDoubleClick_1(object sender, MouseEventArgs e)
+        private void notifyIcon1_MouseDoubleClick_1(object sender, MouseEventArgs e) // тоже дабл клик
         {
             notifyIcon1.Visible = false;
             this.ShowInTaskbar = true;
             WindowState = FormWindowState.Normal;
         }
 
-        private void guna2Button4_Click(object sender, EventArgs e)
+        // discord rpc preview
+        private void guna2Button4_Click(object sender, EventArgs e) 
         {
+            // если текстбокс пуст
             if (guna2TextBox2.Text == "" || guna2TextBox3.Text == "")
             {
                 MessageBox.Show("Кажется, вы не заполнили одно из полей\nПервый Или Второй Текст");
             }
             else
             {
+                // подставляем текст из текстбокса в label
                 guna2HtmlLabel20.Text = guna2TextBox2.Text;
                 guna2HtmlLabel21.Text = guna2TextBox3.Text;
             }
         }
 
-        private void guna2Button2_Click_1(object sender, EventArgs e)
+        // закрытие с сохранением настроек 1
+        private void guna2Button2_Click_1(object sender, EventArgs e) 
         {
-            base.OnClosed(e);
+            base.OnClosed(e); 
             SaveSettings();
             Application.Restart();
             MessageBox.Show("RPC Успешно отключён!\nДля повторного включение запустите его заного");
@@ -183,19 +207,36 @@ namespace Login_Page_Design_UI
 
         }
 
-        private void guna2Button1_Click_1(object sender, EventArgs e)
+        private void guna2Button1_Click_1(object sender, EventArgs e) // закрытие с сохранением настроек 2
         {
+            // Если текст start rpc
             if (guna2Button1.Text == "Start RPC")
             {
+                // устанавливаем текст кнопке
                 guna2Button1.Text = "Stop RPC";
+
+                // меняем цвет на красный
                 guna2Button1.FillColor = Color.FromArgb(237, 66, 69);
+
+                // локальная переменная с application id
                 client = new DiscordRpcClient($"{guna2TextBox1.Text}");
+
+                // инициализация rpc
                 client.Initialize();
+
+                // устанавливаем rpc
                 client.SetPresence(new global::DiscordRPC.RichPresence()
                 {
+                    // первая строка принимает значения 2 текстбока
                     Details = $"{guna2TextBox2.Text}",
+
+                    // вторая строка принимает значения 2 текстбока
                     State = $"{guna2TextBox3.Text}",
+
+                    // прошедшее время с открытия приложения
                     Timestamps = Timestamps.Now,
+
+                    // Сами ассеты
                     Assets = new Assets()
                     {
                         LargeImageKey = $"{guna2TextBox4.Text}",
@@ -204,9 +245,9 @@ namespace Login_Page_Design_UI
                     }
                 });
                 MessageBox.Show("RPC Запущен и свернут в трей");
-                this.Visible = false; /* скроем форму */
-                notifyIcon1.Visible = true; /* покажем икону в трее */
-                notifyIcon1.ContextMenu = m_menu;
+                this.Visible = false; // Скрывается форма
+                notifyIcon1.Visible = true; // Сворачиваем приложение в трек
+                notifyIcon1.ContextMenu = m_menu; // присваниваем констекстное меню
             }
             else
             {
@@ -226,18 +267,22 @@ namespace Login_Page_Design_UI
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
+            // Открываем диалоговое окно
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Filter = "TXT File|*.txt";
 
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
+                // переменные которые читают строки в txt файле
                 string r = File.ReadLines(openFileDialog1.FileName).Skip(0).First();
                 string d = File.ReadLines(openFileDialog1.FileName).Skip(1).First();
                 string t = File.ReadLines(openFileDialog1.FileName).Skip(2).First();
                 string c = File.ReadLines(openFileDialog1.FileName).Skip(3).First();
                 string p = File.ReadLines(openFileDialog1.FileName).Skip(4).First();
                 string s = File.ReadLines(openFileDialog1.FileName).Skip(5).First();
+
+                // textbox принимает значения строк
                 guna2TextBox1.Text = r;
                 guna2TextBox2.Text = d;
                 guna2TextBox3.Text = t;
@@ -249,6 +294,7 @@ namespace Login_Page_Design_UI
 
         private void guna2Button6_Click(object sender, EventArgs e)
         {
+            // очистка текста
             guna2TextBox1.Text = "";
             guna2TextBox2.Text = "";
             guna2TextBox3.Text = "";
@@ -259,6 +305,7 @@ namespace Login_Page_Design_UI
 
         private void guna2Button5_Click(object sender, EventArgs e)
         {
+            // экспорт файла
             SoundPlayer sp = new SoundPlayer();
             sp.Stream = Properties.Resources.blya;
             MessageBox.Show("Создайте TXT файл в любой папке\nи нажмите OK для записи текста туда");
@@ -266,8 +313,10 @@ namespace Login_Page_Design_UI
             openFileDialog1.Filter = "TXT File|*.txt";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
+                // читка файла
                 using (StreamWriter incdate = File.AppendText(openFileDialog1.FileName))
                 {
+                    // запись в файл
                     incdate.WriteLine(guna2TextBox1.Text, '\n');
                     incdate.WriteLine(guna2TextBox2.Text, '\n');
                     incdate.WriteLine(guna2TextBox3.Text, '\n');
@@ -275,6 +324,7 @@ namespace Login_Page_Design_UI
                     incdate.WriteLine(guna2TextBox5.Text, '\n');
                     incdate.WriteLine(guna2TextBox6.Text, '\n');
                 }
+                // проигрывание звука
                 sp.Play();
                 MessageBox.Show("Done");
             }
@@ -282,6 +332,7 @@ namespace Login_Page_Design_UI
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            // таймер которые не работает бля
             int h = DateTime.Now.Hour;
             int m = DateTime.Now.Minute;
             int s = DateTime.Now.Second;
@@ -323,8 +374,9 @@ namespace Login_Page_Design_UI
 
         private void guna2ControlBox2_Click(object sender, EventArgs e)
         {
-            this.Visible = false; /* скроем форму */
-            notifyIcon1.Visible = true; /* покажем икону в трее */
+            // скрытие в трей
+            this.Visible = false;
+            notifyIcon1.Visible = true; 
             notifyIcon1.ContextMenu = m_menu;
         }
 
@@ -335,6 +387,7 @@ namespace Login_Page_Design_UI
 
         private void pictureBox2_Click_1(object sender, EventArgs e)
         {
+            // переход на сайт с тутором
             Process.Start("http://discordrpctutorial.getenjoyment.net/");
         }
     }
