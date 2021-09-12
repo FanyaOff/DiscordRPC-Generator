@@ -60,8 +60,7 @@ namespace Login_Page_Design_UI
                 // проигрывание звука
                 sp.Play();
                 MessageBox.Show("Done");
-                credits cd = new credits();
-                cd.Close();
+                this.Close();
             }
         }
     }
