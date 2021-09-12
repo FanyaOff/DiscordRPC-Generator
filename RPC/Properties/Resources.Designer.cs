@@ -63,6 +63,25 @@ namespace Login_Page_Design_UI.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1232 {
+            get {
+                object obj = ResourceManager.GetObject("1232", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream blya {
+            get {
+                return ResourceManager.GetStream("blya", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap dd8c3166e62635219e0719f76085dc19 {
             get {
                 object obj = ResourceManager.GetObject("dd8c3166e62635219e0719f76085dc19", resourceCulture);
@@ -103,9 +122,9 @@ namespace Login_Page_Design_UI.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Logo_Project_AM {
+        internal static System.Drawing.Bitmap pngkey_com_profile_icon_png_2024792 {
             get {
-                object obj = ResourceManager.GetObject("Logo_Project_AM", resourceCulture);
+                object obj = ResourceManager.GetObject("pngkey.com-profile-icon-png-2024792", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +132,39 @@ namespace Login_Page_Design_UI.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Mesa_de_trabajo_1_copia_4x {
+        internal static System.Drawing.Bitmap round_account_button_with_user_inside_icon_icons_com_72596 {
             get {
-                object obj = ResourceManager.GetObject("Mesa_de_trabajo_1_copia_4x", resourceCulture);
+                object obj = ResourceManager.GetObject("round-account-button-with-user-inside_icon-icons.com_72596", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap round_account_button_with_user_inside_icon_icons_com_72596__1_ {
+            get {
+                object obj = ResourceManager.GetObject("round-account-button-with-user-inside_icon-icons.com_72596 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap round_account_button_with_user_inside_icon_icons1 {
+            get {
+                object obj = ResourceManager.GetObject("round-account-button-with-user-inside_icon-icons1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sign_question_icon_34359 {
+            get {
+                object obj = ResourceManager.GetObject("sign-question-icon_34359", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
