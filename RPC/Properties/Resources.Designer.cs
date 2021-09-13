@@ -63,9 +63,29 @@ namespace Login_Page_Design_UI.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _123 {
+            get {
+                object obj = ResourceManager.GetObject("123", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _1232 {
             get {
                 object obj = ResourceManager.GetObject("1232", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _798026 {
+            get {
+                object obj = ResourceManager.GetObject("798026", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -122,6 +142,26 @@ namespace Login_Page_Design_UI.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap GitHub_Mark_32px {
+            get {
+                object obj = ResourceManager.GetObject("GitHub-Mark-32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Logo {
+            get {
+                object obj = ResourceManager.GetObject("Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pngkey_com_profile_icon_png_2024792 {
             get {
                 object obj = ResourceManager.GetObject("pngkey.com-profile-icon-png-2024792", resourceCulture);
@@ -165,6 +205,26 @@ namespace Login_Page_Design_UI.Properties {
         internal static System.Drawing.Bitmap sign_question_icon_34359 {
             get {
                 object obj = ResourceManager.GetObject("sign-question-icon_34359", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Vk_com_icon_icons_com_55781 {
+            get {
+                object obj = ResourceManager.GetObject("Vk.com_icon-icons.com_55781", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Youtube_Rounded_Solid_icon_icons_com_61558 {
+            get {
+                object obj = ResourceManager.GetObject("Youtube_Rounded_Solid_icon-icons.com_61558", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

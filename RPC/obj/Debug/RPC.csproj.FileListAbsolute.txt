@@ -1,0 +1,16 @@
+C:\Users\Fan9\Desktop\Winform-Login-UI-Design-main\RPC\bin\Debug\Discord RPC.exe.config
+C:\Users\Fan9\Desktop\Winform-Login-UI-Design-main\RPC\bin\Debug\Discord RPC.exe
+C:\Users\Fan9\Desktop\Winform-Login-UI-Design-main\RPC\bin\Debug\Discord RPC.pdb
+C:\Users\Fan9\Desktop\Winform-Login-UI-Design-main\RPC\bin\Debug\DiscordRPC.xml
+C:\Users\Fan9\Desktop\Winform-Login-UI-Design-main\RPC\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Fan9\Desktop\Winform-Login-UI-Design-main\RPC\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\Fan9\Desktop\Winform-Login-UI-Design-main\RPC\obj\Debug\RPC.csproj.AssemblyReference.cache
+C:\Users\Fan9\Desktop\Winform-Login-UI-Design-main\RPC\obj\Debug\Login_Page_Design_UI.credits.resources
+C:\Users\Fan9\Desktop\Winform-Login-UI-Design-main\RPC\obj\Debug\Login_Page_Design_UI.filename.resources
+C:\Users\Fan9\Desktop\Winform-Login-UI-Design-main\RPC\obj\Debug\Login_Page_Design_UI.DiscordRPC.resources
+C:\Users\Fan9\Desktop\Winform-Login-UI-Design-main\RPC\obj\Debug\Login_Page_Design_UI.Properties.Resources.resources
+C:\Users\Fan9\Desktop\Winform-Login-UI-Design-main\RPC\obj\Debug\RPC.csproj.GenerateResource.cache
+C:\Users\Fan9\Desktop\Winform-Login-UI-Design-main\RPC\obj\Debug\RPC.csproj.CoreCompileInputs.cache
+C:\Users\Fan9\Desktop\Winform-Login-UI-Design-main\RPC\obj\Debug\RPC.csproj.Fody.CopyLocal.cache
+C:\Users\Fan9\Desktop\Winform-Login-UI-Design-main\RPC\obj\Debug\Discord RPC.exe
+C:\Users\Fan9\Desktop\Winform-Login-UI-Design-main\RPC\obj\Debug\Discord RPC.pdb

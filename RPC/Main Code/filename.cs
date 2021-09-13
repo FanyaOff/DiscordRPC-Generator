@@ -38,10 +38,8 @@ namespace Login_Page_Design_UI
         {
             SoundPlayer sp = new SoundPlayer();
             sp.Stream = Properties.Resources.blya;
-            FolderBrowserDialog openFileDialog1 = new FolderBrowserDialog();
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                string file = openFileDialog1.SelectedPath + @"\" + $"{file_name.Text}" + @".txt";
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\" + @"DiscordRPC Presets" + @"\";
+            string file = path + @"\" + $"{file_name.Text}" + @".txt";
                 if (!File.Exists(file))
                 {
                     var myFile = File.CreateText(file);
@@ -64,4 +62,4 @@ namespace Login_Page_Design_UI
             }
         }
     }
-}
+

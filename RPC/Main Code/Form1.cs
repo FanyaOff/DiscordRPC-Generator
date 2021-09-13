@@ -7,12 +7,15 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Media;
+using System.Reflection;
+using System.Resources;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
 using DiscordRPC;
+using Login_Page_Design_UI.Properties;
 using TSL.ConfigLib;
 using Timer = System.Windows.Forms.Timer;
 
@@ -27,31 +30,32 @@ namespace Login_Page_Design_UI
         public DiscordRpcClient client;
         public string filePath = Path.GetTempPath() + @"data.txt";
         private Config config;
-        private FormSettings formSettings;
         private ContextMenu m_menu;
         public DiscordRPC()
         {
-            // инициализация таймера (не работает)
+            Timer timer = new Timer();
+            timer.Enabled = true;
             timer.Tick += new EventHandler(timer1_Tick);
-
-            // локальная переменная для проигрывания звуков
-            SoundPlayer sp = new SoundPlayer(); 
-
-            // вытаскиваем файл с звуком для проигрывания из ресурсов проекта
+            timer.Start();
+            SoundPlayer sp = new SoundPlayer();
             sp.Stream = Properties.Resources.blya;
+            string cf = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\" + @"DiscordRPC Presets";
+            if (Directory.Exists(cf))
+            {
 
-            // загрузка формы
+            }
+            else
+            {
+                Directory.CreateDirectory(cf);
+            }
             InitializeComponent();
-
-            // создание файла с настройками
-            if (!File.Exists(filePath)) 
+            this.Load += new System.EventHandler(this.UpdateList1);
+            if (!File.Exists(filePath))
             {
                 var myFile = File.CreateText(filePath);
                 myFile.Close();
             }
-
-            // трей меню
-            m_menu = new ContextMenu(); 
+            m_menu = new ContextMenu();
             m_menu.MenuItems.Add(0,
                 new MenuItem("Show", new System.EventHandler(Show)));
             m_menu.MenuItems.Add(1,
@@ -61,27 +65,12 @@ namespace Login_Page_Design_UI
         }
 
 
-        // дабл клик по трею
-        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e) 
-        {
-            // разворачивание приложения
-            notifyIcon1.Visible = false;
-            this.ShowInTaskbar = true;
-            WindowState = FormWindowState.Normal;
-        }
 
         #region Settings
 
         private void LoadSettings()
         {
             config = Program.Config;
-
-            // настройки положения формы
-            formSettings = new FormSettings();
-            formSettings.LoadFromConfig(config, this.Name);
-            formSettings.AttachToForm(this);
-
-            // прочие настройки
             guna2TextBox1.Text = config.Settings["TextBox1_Value"];
             guna2TextBox2.Text = config.Settings["TextBox2_Value"];
             guna2TextBox3.Text = config.Settings["TextBox3_Value"];
@@ -93,7 +82,6 @@ namespace Login_Page_Design_UI
 
         private void SaveSettings()
         {
-            // прочие настройки
             config.Settings["TextBox1_Value"] = guna2TextBox1.Text;
             config.Settings["TextBox2_Value"] = guna2TextBox2.Text;
             config.Settings["TextBox3_Value"] = guna2TextBox3.Text;
@@ -104,10 +92,6 @@ namespace Login_Page_Design_UI
 
         #endregion
 
-        private void Timer(object sender, ElapsedEventArgs e)
-        {
-            
-        }
 
         protected override void OnLoad(EventArgs e) // при загрузке формы
         {
@@ -154,89 +138,39 @@ namespace Login_Page_Design_UI
             Application.Exit();
         }
 
-        private void guna2Button3_Click(object sender, EventArgs e)
-        {
-            // открытие диалогового окна
-            OpenFileDialog openFileDialog1 = new OpenFileDialog(); 
-
-            // фильтр файлов
-            openFileDialog1.Filter = "PNG Image|*.png";
-
-            // если мы нажали на кнопку ОК
-            if (openFileDialog1.ShowDialog() == DialogResult.OK) 
-            {
-                // заменяем картинку
-                pictureBox1.Image = Image.FromFile(openFileDialog1.FileName); 
-            }
-        }
+       
 
         private void notifyIcon1_MouseDoubleClick_1(object sender, MouseEventArgs e) // тоже дабл клик
         {
             notifyIcon1.Visible = false;
             this.ShowInTaskbar = true;
-            WindowState = FormWindowState.Normal;
+            this.Show();
         }
 
-        // discord rpc preview
-        private void guna2Button4_Click(object sender, EventArgs e) 
-        {
-            // если текстбокс пуст
-            if (guna2TextBox2.Text == "" || guna2TextBox3.Text == "")
-            {
-                MessageBox.Show("Кажется, вы не заполнили одно из полей\nПервый Или Второй Текст");
-            }
-            else
-            {
-                // подставляем текст из текстбокса в label
-                guna2HtmlLabel20.Text = guna2TextBox2.Text;
-                guna2HtmlLabel21.Text = guna2TextBox3.Text;
-            }
-        }
 
         // закрытие с сохранением настроек 1
-        private void guna2Button2_Click_1(object sender, EventArgs e) 
+        private void guna2Button2_Click_1(object sender, EventArgs e)
         {
-            base.OnClosed(e); 
+            base.OnClosed(e);
             SaveSettings();
             Application.Restart();
             MessageBox.Show("RPC Успешно отключён!\nДля повторного включение запустите его заного");
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void guna2Button1_Click_1(object sender, EventArgs e) // закрытие с сохранением настроек 2
         {
-            // Если текст start rpc
             if (guna2Button1.Text == "Start RPC")
             {
-                // устанавливаем текст кнопке
                 guna2Button1.Text = "Stop RPC";
-
-                // меняем цвет на красный
                 guna2Button1.FillColor = Color.FromArgb(237, 66, 69);
-
-                // локальная переменная с application id
                 client = new DiscordRpcClient($"{guna2TextBox1.Text}");
-
-                // инициализация rpc
                 client.Initialize();
-
-                // устанавливаем rpc
                 client.SetPresence(new global::DiscordRPC.RichPresence()
                 {
-                    // первая строка принимает значения 2 текстбока
                     Details = $"{guna2TextBox2.Text}",
-
-                    // вторая строка принимает значения 2 текстбока
                     State = $"{guna2TextBox3.Text}",
-
-                    // прошедшее время с открытия приложения
                     Timestamps = Timestamps.Now,
-
-                    // Сами ассеты
                     Assets = new Assets()
                     {
                         LargeImageKey = $"{guna2TextBox4.Text}",
@@ -256,41 +190,14 @@ namespace Login_Page_Design_UI
                 SaveSettings();
                 Application.Restart();
             }
-            
-        }
-
-
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
 
         }
 
-        private void guna2Button2_Click(object sender, EventArgs e)
-        {
-            // Открываем диалоговое окно
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "TXT File|*.txt";
 
 
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                // переменные которые читают строки в txt файле
-                string r = File.ReadLines(openFileDialog1.FileName).Skip(0).First();
-                string d = File.ReadLines(openFileDialog1.FileName).Skip(1).First();
-                string t = File.ReadLines(openFileDialog1.FileName).Skip(2).First();
-                string c = File.ReadLines(openFileDialog1.FileName).Skip(3).First();
-                string p = File.ReadLines(openFileDialog1.FileName).Skip(4).First();
-                string s = File.ReadLines(openFileDialog1.FileName).Skip(5).First();
+ 
 
-                // textbox принимает значения строк
-                guna2TextBox1.Text = r;
-                guna2TextBox2.Text = d;
-                guna2TextBox3.Text = t;
-                guna2TextBox4.Text = c;
-                guna2TextBox5.Text = p;
-                guna2TextBox6.Text = s;
-            }
-        }
+      
 
         private void guna2Button6_Click(object sender, EventArgs e)
         {
@@ -303,18 +210,58 @@ namespace Login_Page_Design_UI
             guna2TextBox6.Text = "";
         }
 
-        private void guna2Button5_Click(object sender, EventArgs e)
+
+        private void UpdateList1(object sender, EventArgs e)
         {
-            filename go = new filename();
-            go.Show();
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\" + @"DiscordRPC Presets";
+            var dir = new DirectoryInfo(path);
+            var files = new List<string>();
+            foreach (FileInfo file in dir.GetFiles("*.txt"))
+            {
+                files.Add(Path.GetFileName(file.FullName));
+            }
+            foreach (string str in files)
+            {
+                guna2ComboBox1.Items.Add(str);
+            }
+        }
+
+
+
+        private void guna2ControlBox2_Click(object sender, EventArgs e)
+        {
+            // скрытие в трей
+            this.Visible = false;
+            notifyIcon1.Visible = true;
+            notifyIcon1.ContextMenu = m_menu;
+        }
+
+        private void guna2HtmlLabel26_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click_1(object sender, EventArgs e)
+        {
+            // переход на сайт с тутором
+            Process.Start("http://discordrpctutorial.getenjoyment.net/");
+        }
+
+        private void guna2Button7_Click(object sender, EventArgs e)
+        {
+            // открыть форму с кредитами
+            credits cd = new credits();
+            cd.Show();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            // таймер которые не работает бля
+            guna2HtmlLabel20.Text = guna2TextBox2.Text;
+            guna2HtmlLabel21.Text = guna2TextBox3.Text;
             int h = DateTime.Now.Hour;
             int m = DateTime.Now.Minute;
             int s = DateTime.Now.Second;
+
             string time = "";
 
             if (h < 10)
@@ -347,34 +294,86 @@ namespace Login_Page_Design_UI
             {
                 time += s;
             }
-
             guna2HtmlLabel25.Text = time;
+           
+
         }
 
-        private void guna2ControlBox2_Click(object sender, EventArgs e)
+ 
+
+        private void guna2Button5_Click(object sender, EventArgs e)
         {
-            // скрытие в трей
-            this.Visible = false;
-            notifyIcon1.Visible = true; 
-            notifyIcon1.ContextMenu = m_menu;
+            guna2ComboBox1.Items.Clear();
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\" + @"DiscordRPC Presets";
+            var dir = new DirectoryInfo(path);
+            var files = new List<string>();
+            foreach (FileInfo file in dir.GetFiles("*.txt"))
+            {
+                files.Add(Path.GetFileName(file.FullName));
+            }
+            foreach (string str in files)
+            {
+                guna2ComboBox1.Items.Add(str);
+            }
+        }
+   
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fd = new OpenFileDialog();
+            fd.Filter = "PNG File|*.png";
+            if (fd.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox1.Image = Image.FromFile(fd.FileName);
+            }
         }
 
-        private void guna2HtmlLabel26_Click(object sender, EventArgs e)
+        private void guna2Button4_Click_2(object sender, EventArgs e)
         {
-            
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\" + @"DiscordRPC Presets" + @"\";
+            string on = File.ReadLines(path + guna2ComboBox1.SelectedItem.ToString()).Skip(0).First();
+            string tu = File.ReadLines(path + guna2ComboBox1.SelectedItem.ToString()).Skip(1).First();
+            string th = File.ReadLines(path + guna2ComboBox1.SelectedItem.ToString()).Skip(2).First();
+            string fo = File.ReadLines(path + guna2ComboBox1.SelectedItem.ToString()).Skip(3).First();
+            string fv = File.ReadLines(path + guna2ComboBox1.SelectedItem.ToString()).Skip(4).First();
+            string sx = File.ReadLines(path + guna2ComboBox1.SelectedItem.ToString()).Skip(5).First();
+            guna2TextBox1.Text = on;
+            guna2TextBox2.Text = tu;
+            guna2TextBox3.Text = th;
+            guna2TextBox4.Text = fo;
+            guna2TextBox5.Text = fv;
+            guna2TextBox6.Text = sx;
         }
 
-        private void pictureBox2_Click_1(object sender, EventArgs e)
+        private void guna2Button2_Click_2(object sender, EventArgs e)
         {
-            // переход на сайт с тутором
-            Process.Start("http://discordrpctutorial.getenjoyment.net/");
+            filename nf = new filename();
+            nf.Show();
         }
 
-        private void guna2Button7_Click(object sender, EventArgs e)
+        private void guna2Button3_Click(object sender, EventArgs e)
         {
-            // открыть форму с кредитами
-            credits cd = new credits();
-            cd.Show();
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\" + @"DiscordRPC Presets" + @"\";
+            File.Delete(path + guna2ComboBox1.SelectedItem.ToString());
+            guna2ComboBox1.Items.Clear();
+            var dir = new DirectoryInfo(path);
+            var files = new List<string>();
+            foreach (FileInfo file in dir.GetFiles("*.txt"))
+            {
+                files.Add(Path.GetFileName(file.Name));
+            }
+            foreach (string str in files)
+            {
+                guna2ComboBox1.Items.Add(str);
+            }
+
+        }
+
+        private void guna2HtmlLabel1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
+
+        
