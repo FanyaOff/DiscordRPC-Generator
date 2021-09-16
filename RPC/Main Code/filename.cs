@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Media;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,6 +18,7 @@ namespace Login_Page_Design_UI
         public filename()
         {
             InitializeComponent();
+            WebClient client = new WebClient();
         }
 
         private void guna2Panel2_Paint(object sender, PaintEventArgs e)

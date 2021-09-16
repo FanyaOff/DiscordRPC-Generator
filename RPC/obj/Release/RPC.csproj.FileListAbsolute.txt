@@ -42,3 +42,46 @@ C:\Users\Fan9\Desktop\Winform-Login-UI-Design-main\RPC\obj\Release\RPC.csproj.Fo
 C:\Users\Fan9\Desktop\Winform-Login-UI-Design-main\RPC\obj\Release\RPC.csproj.CopyComplete
 C:\Users\Fan9\Desktop\Winform-Login-UI-Design-main\RPC\obj\Release\Discord RPC.exe
 C:\Users\Fan9\Desktop\Winform-Login-UI-Design-main\RPC\obj\Release\Discord RPC.pdb
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\Discord RPC.exe.config
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\Discord RPC.exe
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\Discord RPC.pdb
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\Avalonia.xml
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\Avalonia.Animation.xml
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\Avalonia.Base.xml
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\Avalonia.Controls.xml
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\Avalonia.DesignerSupport.xml
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\Avalonia.DesktopRuntime.xml
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\Avalonia.Dialogs.xml
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\Avalonia.Input.xml
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\Avalonia.Interactivity.xml
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\Avalonia.Layout.xml
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\Avalonia.Markup.xml
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\Avalonia.Markup.Xaml.xml
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\Avalonia.MicroCom.xml
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\Avalonia.OpenGL.xml
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\Avalonia.Remote.Protocol.xml
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\Avalonia.Styling.xml
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\Avalonia.Themes.Default.xml
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\Avalonia.Themes.Fluent.xml
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\Avalonia.Visuals.xml
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\DiscordRPC.xml
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\JetBrains.Annotations.xml
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\Newtonsoft.Json.xml
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\System.Buffers.xml
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\System.Diagnostics.DiagnosticSource.xml
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\System.Memory.xml
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\System.Numerics.Vectors.xml
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\System.Reactive.xml
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\System.Threading.Tasks.Extensions.xml
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\bin\Release\System.ValueTuple.xml
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\obj\Release\RPC.csproj.AssemblyReference.cache
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\obj\Release\Login_Page_Design_UI.credits.resources
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\obj\Release\Login_Page_Design_UI.filename.resources
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\obj\Release\Login_Page_Design_UI.DiscordRPC.resources
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\obj\Release\Login_Page_Design_UI.Properties.Resources.resources
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\obj\Release\RPC.csproj.GenerateResource.cache
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\obj\Release\RPC.csproj.CoreCompileInputs.cache
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\obj\Release\RPC.csproj.Fody.CopyLocal.cache
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\obj\Release\Discord RPC.exe
+C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\obj\Release\Discord RPC.pdb

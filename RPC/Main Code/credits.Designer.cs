@@ -36,6 +36,7 @@ namespace Login_Page_Design_UI
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2HtmlLabel26 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel24 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -69,6 +70,7 @@ namespace Login_Page_Design_UI
             this.guna2HtmlLabel25 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2DragControl2 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
+            this.guna2HtmlLabel27 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -89,6 +91,8 @@ namespace Login_Page_Design_UI
             // guna2Panel2
             // 
             this.guna2Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.guna2Panel2.Controls.Add(this.guna2HtmlLabel27);
+            this.guna2Panel2.Controls.Add(this.guna2HtmlLabel26);
             this.guna2Panel2.Controls.Add(this.guna2HtmlLabel24);
             this.guna2Panel2.Controls.Add(this.pictureBox3);
             this.guna2Panel2.Controls.Add(this.pictureBox2);
@@ -102,6 +106,17 @@ namespace Login_Page_Design_UI
             this.guna2Panel2.ShadowDecoration.Parent = this.guna2Panel2;
             this.guna2Panel2.Size = new System.Drawing.Size(253, 253);
             this.guna2Panel2.TabIndex = 3;
+            // 
+            // guna2HtmlLabel26
+            // 
+            this.guna2HtmlLabel26.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel26.Font = new System.Drawing.Font("Segoe UI Semilight", 8F);
+            this.guna2HtmlLabel26.ForeColor = System.Drawing.Color.White;
+            this.guna2HtmlLabel26.Location = new System.Drawing.Point(93, 234);
+            this.guna2HtmlLabel26.Name = "guna2HtmlLabel26";
+            this.guna2HtmlLabel26.Size = new System.Drawing.Size(40, 15);
+            this.guna2HtmlLabel26.TabIndex = 39;
+            this.guna2HtmlLabel26.Text = "Version:";
             // 
             // guna2HtmlLabel24
             // 
@@ -460,6 +475,17 @@ namespace Login_Page_Design_UI
             // 
             this.guna2ShadowForm1.TargetForm = this;
             // 
+            // guna2HtmlLabel27
+            // 
+            this.guna2HtmlLabel27.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel27.Font = new System.Drawing.Font("Segoe UI Semilight", 8F);
+            this.guna2HtmlLabel27.ForeColor = System.Drawing.Color.White;
+            this.guna2HtmlLabel27.Location = new System.Drawing.Point(134, 234);
+            this.guna2HtmlLabel27.Name = "guna2HtmlLabel27";
+            this.guna2HtmlLabel27.Size = new System.Drawing.Size(13, 15);
+            this.guna2HtmlLabel27.TabIndex = 40;
+            this.guna2HtmlLabel27.Text = "12";
+            // 
             // credits
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -520,5 +546,7 @@ namespace Login_Page_Design_UI
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel24;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel26;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel27;
     }
 }

@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,6 +17,9 @@ namespace Login_Page_Design_UI
         public credits()
         {
             InitializeComponent();
+            WebClient client = new WebClient();
+            string ver = client.DownloadString("http://discordrpctutorial.getenjoyment.net/version.txt");
+            guna2HtmlLabel27.Text = ver;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
