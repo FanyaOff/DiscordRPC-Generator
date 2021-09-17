@@ -17,6 +17,7 @@ using System.Windows.Forms;
 using DiscordRPC;
 using Login_Page_Design_UI.Properties;
 using TSL.ConfigLib;
+using Button = DiscordRPC.Button;
 using Timer = System.Windows.Forms.Timer;
 
 namespace Login_Page_Design_UI
@@ -27,6 +28,8 @@ namespace Login_Page_Design_UI
         // Local Strings
         System.Windows.Forms.Timer timer = new Timer();
         public static Config Config { get; private set; }
+        public Button[] Buttons { get; private set; }
+
         public DiscordRpcClient client;
         public string filePath = Path.GetTempPath() + @"data.txt";
         private Config config;
@@ -75,8 +78,9 @@ namespace Login_Page_Design_UI
             guna2TextBox2.Text = config.Settings["TextBox2_Value"];
             guna2TextBox3.Text = config.Settings["TextBox3_Value"];
             guna2TextBox4.Text = config.Settings["TextBox4_Value"];
-            guna2TextBox5.Text = config.Settings["TextBox5_Value"];
             guna2TextBox6.Text = config.Settings["TextBox6_Value"];
+            guna2TextBox7.Text = config.Settings["TextBox7_Value"];
+            guna2TextBox8.Text = config.Settings["TextBox8_Value"];
         }
 
 
@@ -86,8 +90,9 @@ namespace Login_Page_Design_UI
             config.Settings["TextBox2_Value"] = guna2TextBox2.Text;
             config.Settings["TextBox3_Value"] = guna2TextBox3.Text;
             config.Settings["TextBox4_Value"] = guna2TextBox4.Text;
-            config.Settings["TextBox5_Value"] = guna2TextBox5.Text;
             config.Settings["TextBox6_Value"] = guna2TextBox6.Text;
+            config.Settings["TextBox7_Value"] = guna2TextBox7.Text;
+            config.Settings["TextBox8_Value"] = guna2TextBox8.Text;
         }
 
         #endregion
@@ -164,20 +169,88 @@ namespace Login_Page_Design_UI
             {
                 guna2Button1.Text = "Stop RPC";
                 guna2Button1.FillColor = Color.FromArgb(237, 66, 69);
-                client = new DiscordRpcClient($"{guna2TextBox1.Text}");
-                client.Initialize();
-                client.SetPresence(new global::DiscordRPC.RichPresence()
+
+                if (guna2CheckBox3.Checked)
                 {
-                    Details = $"{guna2TextBox2.Text}",
-                    State = $"{guna2TextBox3.Text}",
-                    Timestamps = Timestamps.Now,
-                    Assets = new Assets()
+                    client = new DiscordRpcClient($"{guna2TextBox1.Text}");
+                    client.Initialize();
+                    client.SetPresence(new global::DiscordRPC.RichPresence()
                     {
-                        LargeImageKey = $"{guna2TextBox4.Text}",
-                        LargeImageText = $"{guna2TextBox5.Text}",
-                        SmallImageKey = $"{guna2TextBox6.Text}",
+                        Details = $"{guna2TextBox2.Text}",
+                        State = $"{guna2TextBox3.Text}",
+                        Assets = new Assets()
+                        {
+                            LargeImageKey = $"{guna2TextBox4.Text}",
+                            SmallImageKey = $"{guna2TextBox6.Text}",
+                        }
+                    });
+                    guna2HtmlLabel22.Visible = false;
+                    guna2HtmlLabel25.Visible = false;
+                }
+                else
+                {
+
+                    client = new DiscordRpcClient($"{guna2TextBox1.Text}");
+                    client.Initialize();
+                    client.SetPresence(new RichPresence()
+                    {
+                        Details = $"{guna2TextBox2.Text}",
+                        State = $"{guna2TextBox3.Text}",
+                        Timestamps = Timestamps.Now,
+                        Assets = new Assets()
+                        {
+                            LargeImageKey = $"{guna2TextBox4.Text}",
+                            SmallImageKey = $"{guna2TextBox6.Text}",
+                        }
+                    });
+                    guna2HtmlLabel22.Visible = true;
+                    guna2HtmlLabel25.Visible = true;
+                }
+                if (guna2CheckBox1.Checked)
+                {
+                    if (guna2CheckBox3.Checked)
+                    {
+                        client = new DiscordRpcClient($"{guna2TextBox1.Text}");
+                        client.Initialize();
+                        client.SetPresence(new global::DiscordRPC.RichPresence()
+                        {
+                            Details = $"{guna2TextBox2.Text}",
+                            State = $"{guna2TextBox3.Text}",
+                            Assets = new Assets()
+                            {
+                                LargeImageKey = $"{guna2TextBox4.Text}",
+                                SmallImageKey = $"{guna2TextBox6.Text}",
+                            },
+                            Buttons = new Button[]
+                            {
+                                new Button() { Label = $"{guna2TextBox7.Text}", Url = $"{guna2TextBox8.Text}" }
+                            }
+                        });
                     }
-                });
+                    else
+                    {
+
+                        client = new DiscordRpcClient($"{guna2TextBox1.Text}");
+                        client.Initialize();
+                        client.SetPresence(new RichPresence()
+                        {
+                            Details = $"{guna2TextBox2.Text}",
+                            State = $"{guna2TextBox3.Text}",
+                            Timestamps = Timestamps.Now,
+                            Assets = new Assets()
+                            {
+                                LargeImageKey = $"{guna2TextBox4.Text}",
+                                SmallImageKey = $"{guna2TextBox6.Text}",
+                            },
+                            Buttons = new Button[]
+                            {
+                                new Button() { Label = $"{guna2TextBox7.Text}", Url = $"{guna2TextBox8.Text}" }
+                            }
+                        });
+                    }
+                }
+                
+
                 MessageBox.Show("RPC Запущен и свернут в трей");
                 this.Visible = false; // Скрывается форма
                 notifyIcon1.Visible = true; // Сворачиваем приложение в трек
@@ -206,7 +279,6 @@ namespace Login_Page_Design_UI
             guna2TextBox2.Text = "";
             guna2TextBox3.Text = "";
             guna2TextBox4.Text = "";
-            guna2TextBox5.Text = "";
             guna2TextBox6.Text = "";
         }
 
@@ -295,7 +367,17 @@ namespace Login_Page_Design_UI
                 time += s;
             }
             guna2HtmlLabel25.Text = time;
-           
+
+            if (guna2CheckBox3.Checked)
+            {
+                guna2HtmlLabel22.Visible = false;
+                guna2HtmlLabel25.Visible = false;
+            }
+            else
+            {
+                guna2HtmlLabel22.Visible = true;
+                guna2HtmlLabel25.Visible = true;
+            }
 
         }
 
@@ -337,12 +419,16 @@ namespace Login_Page_Design_UI
             string fo = File.ReadLines(path + guna2ComboBox1.SelectedItem.ToString()).Skip(3).First();
             string fv = File.ReadLines(path + guna2ComboBox1.SelectedItem.ToString()).Skip(4).First();
             string sx = File.ReadLines(path + guna2ComboBox1.SelectedItem.ToString()).Skip(5).First();
+            string sv = File.ReadLines(path + guna2ComboBox1.SelectedItem.ToString()).Skip(6).First();
+            string et = File.ReadLines(path + guna2ComboBox1.SelectedItem.ToString()).Skip(7).First();
             guna2TextBox1.Text = on;
             guna2TextBox2.Text = tu;
             guna2TextBox3.Text = th;
             guna2TextBox4.Text = fo;
             guna2TextBox5.Text = fv;
             guna2TextBox6.Text = sx;
+            guna2TextBox7.Text = sv;
+            guna2TextBox8.Text = et;
         }
 
         private void guna2Button2_Click_2(object sender, EventArgs e)

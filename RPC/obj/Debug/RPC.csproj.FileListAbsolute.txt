@@ -55,6 +55,5 @@ C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\obj\Debug\Login_Page_Des
 C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\obj\Debug\RPC.csproj.GenerateResource.cache
 C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\obj\Debug\RPC.csproj.CoreCompileInputs.cache
 C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\obj\Debug\RPC.csproj.Fody.CopyLocal.cache
-C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\obj\Debug\RPC.csproj.CopyComplete
 C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\obj\Debug\Discord RPC.exe
 C:\Users\Fan9\Documents\GitHub\DiscordRPC-Generator\RPC\obj\Debug\Discord RPC.pdb

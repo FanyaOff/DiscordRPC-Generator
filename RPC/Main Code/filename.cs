@@ -41,13 +41,13 @@ namespace Login_Page_Design_UI
             SoundPlayer sp = new SoundPlayer();
             sp.Stream = Properties.Resources.blya;
             string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\" + @"DiscordRPC Presets" + @"\";
-            string file = path + @"\" + $"{file_name.Text}" + @".txt";
-                if (!File.Exists(file))
+            string file1 = path + @"\" + $"{file_name.Text}" + @".txt";
+                if (!File.Exists(file1))
                 {
-                    var myFile = File.CreateText(file);
+                    var myFile = File.CreateText(file1);
                     myFile.Close();
                 }
-                using (StreamWriter incdate = File.AppendText(file))
+                using (StreamWriter incdate = File.AppendText(file1))
                 {
                     // запись в файл
                     incdate.WriteLine(Program.f1.guna2TextBox1.Text, '\n');
@@ -56,10 +56,23 @@ namespace Login_Page_Design_UI
                     incdate.WriteLine(Program.f1.guna2TextBox4.Text, '\n');
                     incdate.WriteLine(Program.f1.guna2TextBox5.Text, '\n');
                     incdate.WriteLine(Program.f1.guna2TextBox6.Text, '\n');
-                }
+                    incdate.WriteLine(Program.f1.guna2TextBox7.Text, '\n');
+                    incdate.WriteLine(Program.f1.guna2TextBox8.Text, '\n');
+            }
                 // проигрывание звука
                 sp.Play();
                 MessageBox.Show("Done");
+                Program.f1.guna2ComboBox1.Items.Clear();
+                var dir = new DirectoryInfo(path);
+                var files = new List<string>();
+                foreach (FileInfo file in dir.GetFiles("*.txt"))
+                {
+                   files.Add(Path.GetFileName(file.FullName));
+                }
+                foreach (string str in files)
+                {
+                   Program.f1.guna2ComboBox1.Items.Add(str);
+                }
                 this.Close();
             }
         }
