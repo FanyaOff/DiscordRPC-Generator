@@ -19,6 +19,7 @@ using Login_Page_Design_UI.Properties;
 using TSL.ConfigLib;
 using Button = DiscordRPC.Button;
 using Timer = System.Windows.Forms.Timer;
+using Microsoft.Win32;
 
 namespace Login_Page_Design_UI
 {
@@ -182,6 +183,8 @@ namespace Login_Page_Design_UI
                         {
                             LargeImageKey = $"{guna2TextBox4.Text}",
                             SmallImageKey = $"{guna2TextBox6.Text}",
+                            SmallImageText = $"{guna2TextBox7.Text}",
+                            LargeImageText = $"{guna2TextBox8.Text}",
                         }
                     });
                     guna2HtmlLabel22.Visible = false;
@@ -201,67 +204,22 @@ namespace Login_Page_Design_UI
                         {
                             LargeImageKey = $"{guna2TextBox4.Text}",
                             SmallImageKey = $"{guna2TextBox6.Text}",
+                            SmallImageText = $"{guna2TextBox7.Text}",
+                            LargeImageText = $"{guna2TextBox8.Text}",
                         }
                     });
                     guna2HtmlLabel22.Visible = true;
                     guna2HtmlLabel25.Visible = true;
                 }
-                if (guna2CheckBox1.Checked)
-                {
-                    if (guna2CheckBox3.Checked)
-                    {
-                        client = new DiscordRpcClient($"{guna2TextBox1.Text}");
-                        client.Initialize();
-                        client.SetPresence(new global::DiscordRPC.RichPresence()
-                        {
-                            Details = $"{guna2TextBox2.Text}",
-                            State = $"{guna2TextBox3.Text}",
-                            Assets = new Assets()
-                            {
-                                LargeImageKey = $"{guna2TextBox4.Text}",
-                                SmallImageKey = $"{guna2TextBox6.Text}",
-                            },
-                            Buttons = new Button[]
-                            {
-                                new Button() { Label = $"{guna2TextBox7.Text}", Url = $"{guna2TextBox8.Text}" }
-                            }
-                        });
-                    }
-                    else
-                    {
-
-                        client = new DiscordRpcClient($"{guna2TextBox1.Text}");
-                        client.Initialize();
-                        client.SetPresence(new RichPresence()
-                        {
-                            Details = $"{guna2TextBox2.Text}",
-                            State = $"{guna2TextBox3.Text}",
-                            Timestamps = Timestamps.Now,
-                            Assets = new Assets()
-                            {
-                                LargeImageKey = $"{guna2TextBox4.Text}",
-                                SmallImageKey = $"{guna2TextBox6.Text}",
-                            },
-                            Buttons = new Button[]
-                            {
-                                new Button() { Label = $"{guna2TextBox7.Text}", Url = $"{guna2TextBox8.Text}" }
-                            }
-                        });
-                    }
-                }
-                
-
                 MessageBox.Show("RPC Запущен и свернут в трей");
                 this.Visible = false; // Скрывается форма
-                notifyIcon1.Visible = true; // Сворачиваем приложение в трек
+                notifyIcon1.Visible = true; // Сворачиваем приложение в трей
                 notifyIcon1.ContextMenu = m_menu; // присваниваем констекстное меню
             }
             else
             {
                 guna2Button1.Text = "Start RPC";
-                base.OnClosed(e);
-                SaveSettings();
-                Application.Restart();
+                client.Dispose();
             }
 
         }
@@ -322,6 +280,7 @@ namespace Login_Page_Design_UI
         private void guna2Button7_Click(object sender, EventArgs e)
         {
             // открыть форму с кредитами
+
             credits cd = new credits();
             cd.Show();
         }
@@ -378,7 +337,6 @@ namespace Login_Page_Design_UI
                 guna2HtmlLabel22.Visible = true;
                 guna2HtmlLabel25.Visible = true;
             }
-
         }
 
  
@@ -439,25 +397,67 @@ namespace Login_Page_Design_UI
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\" + @"DiscordRPC Presets" + @"\";
-            File.Delete(path + guna2ComboBox1.SelectedItem.ToString());
-            guna2ComboBox1.Items.Clear();
-            var dir = new DirectoryInfo(path);
-            var files = new List<string>();
-            foreach (FileInfo file in dir.GetFiles("*.txt"))
-            {
-                files.Add(Path.GetFileName(file.Name));
-            }
-            foreach (string str in files)
-            {
-                guna2ComboBox1.Items.Add(str);
-            }
+            
 
         }
 
         private void guna2HtmlLabel1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\" + @"DiscordRPC Presets" + @"\";
+            string on = File.ReadLines(path + guna2ComboBox1.SelectedItem.ToString()).Skip(0).First();
+            string tu = File.ReadLines(path + guna2ComboBox1.SelectedItem.ToString()).Skip(1).First();
+            string th = File.ReadLines(path + guna2ComboBox1.SelectedItem.ToString()).Skip(2).First();
+            string fo = File.ReadLines(path + guna2ComboBox1.SelectedItem.ToString()).Skip(3).First();
+            string fv = File.ReadLines(path + guna2ComboBox1.SelectedItem.ToString()).Skip(4).First();
+            string sx = File.ReadLines(path + guna2ComboBox1.SelectedItem.ToString()).Skip(5).First();
+            string sv = File.ReadLines(path + guna2ComboBox1.SelectedItem.ToString()).Skip(6).First();
+            string et = File.ReadLines(path + guna2ComboBox1.SelectedItem.ToString()).Skip(7).First();
+            guna2TextBox1.Text = on;
+            guna2TextBox2.Text = tu;
+            guna2TextBox3.Text = th;
+            guna2TextBox4.Text = fo;
+            guna2TextBox5.Text = fv;
+            guna2TextBox6.Text = sx;
+            guna2TextBox7.Text = sv;
+            guna2TextBox8.Text = et;
+        }
+        const string name = "RpcApp";
+        public bool SetAutorunValue(bool autorun)
+        {
+            string ExePath = System.Windows.Forms.Application.ExecutablePath;
+            RegistryKey reg;
+            reg = Registry.CurrentUser.CreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Run\\");
+            try
+            {
+                if (autorun)
+                    reg.SetValue(name, ExePath);
+                else
+                    reg.DeleteValue(name);
+
+                reg.Close();
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private void start1_CheckedChanged(object sender, EventArgs e)
+        {
+            SetAutorunValue(true);
+            MessageBox.Show("Готово");
+        }
+
+        private void start2_CheckedChanged(object sender, EventArgs e)
+        {
+            SetAutorunValue(false);
+            MessageBox.Show("Готово");
         }
     }
 }
