@@ -29,7 +29,7 @@ namespace Login_Page_Design_UI
             string desktop = Path.Combine(Environment.GetEnvironmentVariable("USERPROFILE"), "Downloads");
             string dwnload = "https://raw.githubusercontent.com/FanyaOff/DiscordRPC-Generator/main/Discord%20RPC.exe";
 
-            if (client.DownloadString("http://discordrpctutorial.getenjoyment.net/version.txt").Contains("0.4"))
+            if (client.DownloadString("http://discordrpctutorial.getenjoyment.net/version.txt").Contains("0.5"))
             {
                 Config = new Config();
                 Config.Load(Path.GetTempPath() + "config.xml");

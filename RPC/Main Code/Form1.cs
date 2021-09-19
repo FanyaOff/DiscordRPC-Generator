@@ -238,6 +238,8 @@ namespace Login_Page_Design_UI
             guna2TextBox3.Text = "";
             guna2TextBox4.Text = "";
             guna2TextBox6.Text = "";
+            guna2TextBox7.Text = "";
+            guna2TextBox8.Text = "";
         }
 
 
@@ -397,8 +399,19 @@ namespace Login_Page_Design_UI
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
-            
-
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\" + @"DiscordRPC Presets" + @"\";
+            File.Delete(path + guna2ComboBox1.SelectedItem.ToString());
+            guna2ComboBox1.Items.Clear();
+            var dir = new DirectoryInfo(path);
+            var files = new List<string>();
+            foreach (FileInfo file in dir.GetFiles("*.txt"))
+            {
+                files.Add(Path.GetFileName(file.FullName));
+            }
+            foreach (string str in files)
+            {
+                guna2ComboBox1.Items.Add(str);
+            }
         }
 
         private void guna2HtmlLabel1_Click(object sender, EventArgs e)
