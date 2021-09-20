@@ -219,7 +219,8 @@ namespace Login_Page_Design_UI
             else
             {
                 guna2Button1.Text = "Start RPC";
-                client.Dispose();
+                guna2Button1.FillColor = Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(165)))), ((int)(((byte)(93)))));
+                Application.Restart();
             }
 
         }

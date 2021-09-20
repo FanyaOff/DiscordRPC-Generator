@@ -26,10 +26,11 @@ namespace Login_Page_Design_UI
             sp.Stream = Properties.Resources.blya;
             WebClient client = new WebClient();
             string ver = client.DownloadString("http://discordrpctutorial.getenjoyment.net/version.txt");
+            string log = client.DownloadString("http://discordrpctutorial.getenjoyment.net/changelog.txt");
             string desktop = Path.Combine(Environment.GetEnvironmentVariable("USERPROFILE"), "Downloads");
             string dwnload = "https://raw.githubusercontent.com/FanyaOff/DiscordRPC-Generator/main/Discord%20RPC.exe";
 
-            if (client.DownloadString("http://discordrpctutorial.getenjoyment.net/version.txt").Contains("0.5"))
+            if (client.DownloadString("http://discordrpctutorial.getenjoyment.net/version.txt").Contains("0.6"))
             {
                 Config = new Config();
                 Config.Load(Path.GetTempPath() + "config.xml");
@@ -41,7 +42,7 @@ namespace Login_Page_Design_UI
             else
             {
                 sp.Play();
-                MessageBox.Show("Найдено обновление! Подождите примерно 10-15 секунд\nВерсия на сервере: " + ver + "\nВерсия вашего клиента: " + Application.ProductVersion);
+                MessageBox.Show("Найдено обновление! Подождите примерно 10-15 секунд\nВерсия на сервере: " + ver + "\nВерсия вашего клиента: " + Application.ProductVersion + "\nИзменения: " + "\n" + log);
                 client.DownloadFile(dwnload, desktop + "/" + "v_" + ver + "_Discord RPC.exe");
                 sp.Play();
                 Process.Start("explorer.exe", desktop);
