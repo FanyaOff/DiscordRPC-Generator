@@ -1,6 +1,8 @@
 # DiscordRPC-Generator
 C# Discord rpc generator
 
+**If you want enable auto-update, uncomment lines and changes links in MainCode/Program.cs & MainCode/credits.cs**
+
 Features:
 * Discord Style Design
 * Presets System
