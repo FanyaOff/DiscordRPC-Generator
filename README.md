@@ -1,6 +1,8 @@
 # DiscordRPC-Generator
 C# Discord rpc generator
 
+**[Download](https://github.com/FanyaOff/DiscordRPC-Generator/releases/tag/rpc)**
+
 **If you want enable auto-update, uncomment lines and changes links in [Main Code/Program.cs](https://github.com/FanyaOff/DiscordRPC-Generator/blob/main/RPC/Main%20Code/Program.cs) & [Main Code/credits.cs](https://github.com/FanyaOff/DiscordRPC-Generator/blob/main/RPC/Main%20Code/credits.cs)**
 
 **Features:**
