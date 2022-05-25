@@ -3,7 +3,7 @@ C# Discord rpc generator
 
 **If you want enable auto-update, uncomment lines and changes links in [Main Code/Program.cs](https://github.com/FanyaOff/DiscordRPC-Generator/blob/main/RPC/Main%20Code/Program.cs) & [Main Code/credits.cs](https://github.com/FanyaOff/DiscordRPC-Generator/blob/main/RPC/Main%20Code/credits.cs)**
 
-Features:
+**Features:**
 * Discord Style Design
 * Presets System
 * Auto Updater
